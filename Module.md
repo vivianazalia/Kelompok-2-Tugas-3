@@ -16,7 +16,7 @@ IDameable
 - Void AddScore ()
 
 
-[Module Object]
+[PowerUp]
 - PowerUp
 
 [Save Data]
