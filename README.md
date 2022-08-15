@@ -1,2 +1,36 @@
-# Kelompok-2-Tugas-3
-Kelompok 2 Tugas 3
+[Module Character]
+
+*BaseObject ->speed,move(), shoot()
+**Character
+**Enemy
+
+*Shield
+
+IDameable
+
+- Void TakeDamage ( )
+- Void OnDestruct ( )
+
+[Player Status]
+- Void ReduceLife ()
+- Void AddScore ()
+
+
+[Module Object]
+- PowerUp
+
+[Save Data]
+-DataController
+Void Save(nama, score)
+Void Load()
+-DataView
+void DisplayDataLeadeboard()
+
+[Sound]
+void PlayBGM()
+void Sfx()
+
+
+
+
+
