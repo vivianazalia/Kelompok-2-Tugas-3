@@ -19,12 +19,10 @@ IDameable
 [PowerUp]
 - PowerUp
 
-[Save Data]
--DataController
-Void Save(nama, score)
-Void Load()
--DataView
-void DisplayDataLeadeboard()
+[Module Leaderboard]
+- Save(nama, score)
+- Load
+- DataView
 
 [Sound]
 void PlayBGM()
