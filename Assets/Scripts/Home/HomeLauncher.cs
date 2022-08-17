@@ -4,11 +4,14 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using ShooterSpace.Boot;
+using ShooterSpace.Module.Leaderboard;
 
 namespace ShooterSpace.Home
 {
     public class HomeLauncher : SceneLauncher<HomeLauncher, HomeView>
     {
+        private LeaderboardController _leaderboard;
+
         public override string SceneName => "Home";
 
         protected override IConnector[] GetSceneConnectors()
@@ -18,12 +21,16 @@ namespace ShooterSpace.Home
 
         protected override IController[] GetSceneDependencies()
         {
-            return null;
+            return new IController[]
+            {
+                new LeaderboardController()
+            };
         }
 
         protected override IEnumerator InitSceneObject()
         {
             _view.SetCallbacks(OnClickPlayButton);
+            _leaderboard.SetView(_view.leaderboardView);
             yield return null;
         }
 

@@ -7,12 +7,15 @@ using UnityEngine.Events;
 using ShooterSpace.Boot;
 using TMPro;
 using UnityEngine.UI;
+using ShooterSpace.Module.Leaderboard;
 
 namespace ShooterSpace.Home
 {
     public class HomeView : BaseSceneView
     {
         [SerializeField] private Button _playButton;
+
+        [SerializeField] public LeaderboardView leaderboardView;
 
         public void SetCallbacks(UnityAction onClickPlayButton)
         {
