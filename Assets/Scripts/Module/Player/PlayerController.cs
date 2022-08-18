@@ -10,6 +10,10 @@ namespace ShooterSpace.Module.Player
 {
     public class PlayerController : ObjectController<PlayerController, PlayerModel, IPlayerModel, PlayerView>
     {
+        public override IEnumerator Initialize()
+        {
+            yield return base.Initialize();
+        }
         public void OnMove(MovePlayerMessage msg)
         {
             Debug.Log("Move Player");

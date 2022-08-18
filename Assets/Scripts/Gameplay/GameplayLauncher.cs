@@ -7,6 +7,7 @@ using ShooterSpace.Boot;
 using ShooterSpace.Module.Player;
 using ShooterSpace.Module.Enemy;
 using ShooterSpace.Module.Input;
+using ShooterSpace.Module.UI;
 
 namespace ShooterSpace.Gameplay
 {
@@ -20,7 +21,8 @@ namespace ShooterSpace.Gameplay
         protected override IConnector[] GetSceneConnectors()
         {
             return new IConnector[]{
-                new PlayerConnector()
+                new PlayerConnector(), 
+                new EnemyConnector()
             };
         }
 
@@ -29,7 +31,8 @@ namespace ShooterSpace.Gameplay
             return new IController[]{
                 new PlayerController(),
                 new EnemyController(), 
-                new InputController()
+                new InputController(),
+                new UIController()
             };
         }
 
