@@ -11,7 +11,6 @@ namespace ShooterSpace.Module.Enemy
         protected override void InitRenderModel(IEnemyModel model)
         {
             //Debug.Log("Show enemy");
-            gameObject.SetActive(true);
         }
 
         protected override void UpdateRenderModel(IEnemyModel model)
