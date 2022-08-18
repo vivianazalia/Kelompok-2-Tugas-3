@@ -10,6 +10,7 @@ namespace ShooterSpace.Module.Leaderboard
 {
     public class LeaderboardController : ObjectController<LeaderboardController, LeaderboardModel, ILeaderboardModel, LeaderboardView>
     {
+        // panggil fungsi ini saat gameover
         public void AddNewScore(string name, int score)
         {
             _model.AddData(name, score);

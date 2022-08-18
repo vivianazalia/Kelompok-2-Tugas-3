@@ -4,6 +4,7 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using ShooterSpace.Boot;
+using ShooterSpace.Module.Soundfx;
 
 namespace ShooterSpace.Gameplay
 {
@@ -18,7 +19,9 @@ namespace ShooterSpace.Gameplay
 
         protected override IController[] GetSceneDependencies()
         {
-            return null;
+            return new IController[]{
+                new SoundfxController()
+            };
         }
 
         protected override IEnumerator InitSceneObject()
