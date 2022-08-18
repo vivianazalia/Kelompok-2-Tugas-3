@@ -20,5 +20,8 @@ namespace ShooterSpace.Module.PubSubMessage
             this.audioIndex = audio;
         }
     }
+    public struct InputLeftMessage { }
+    public struct InputRightMessage { }
+    public struct InputShootMessage { }
 }
 
