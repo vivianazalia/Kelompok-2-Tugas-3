@@ -34,19 +34,31 @@ namespace ShooterSpace.Module.Enemy
         {
             if (_model.IsPlaying)
             {
-                Vector2 pos = _model.Position + (Vector2.right * _model.MoveSpeed * Time.deltaTime);
-                _model.SetPosition(pos);
-                _view.transform.position = _model.Position;
-                //if (_view.transform.position.x < _model.MaxLeftPos.x)
-                //{
-                //    
-                //}
-                //else if(_view.transform.position.x > _model.MaxRightPos.x)
-                //{
-                //    Vector2 pos = _model.Position + (Vector2.left * _model.MoveSpeed * Time.deltaTime);
-                //    _model.SetPosition(pos);
-                //    _view.transform.position = _model.Position;
-                //}
+                OnReachBound();
+                if (_model.IsLeft)
+                {
+                    Vector2 pos = _model.Position + (Vector2.left * _model.MoveSpeed * Time.deltaTime);
+                    _model.SetPosition(pos);
+                    _view.transform.position = _model.Position;
+                }
+                else
+                {
+                    Vector2 pos = _model.Position + (Vector2.right * _model.MoveSpeed * Time.deltaTime);
+                    _model.SetPosition(pos);
+                    _view.transform.position = _model.Position;
+                }
+            }
+        }
+
+        private void OnReachBound()
+        {
+            if(_model.Position.x >= _model.MaxRightPos.x)
+            {
+                _model.IsLeftMovement(true);
+            }
+            else if(_model.Position.x <= _model.MaxLeftPos.x)
+            {
+                _model.IsLeftMovement(false);
             }
         }
 

@@ -12,13 +12,14 @@ namespace ShooterSpace.Module.Enemy
         public bool IsPlaying { get; private set; } = true;
         public Vector2 BoardSize { get; private set; } = new Vector2(5, 4);
         public Vector2 TileSize { get; private set; }
-        public Vector2 Offset { get; private set; } = new Vector2(.2f, .2f);
+        public Vector2 Offset { get; private set; } = new Vector2(1f, 1f);
         public Vector2 StartPos { get; private set; }
         public Vector2 EndPos { get; private set; }
         public Vector2 Position { get; private set; } = new Vector3(1.5f, 0.5f);
-        public float MoveSpeed { get; private set; } = 1f;
-        public Vector2 MaxLeftPos { get; private set; } = new Vector2(-7, 0);
-        public Vector2 MaxRightPos { get; private set; } = new Vector2(7, 0);
+        public float MoveSpeed { get; private set; } = 2f;
+        public Vector2 MaxLeftPos { get; private set; } = new Vector2(-5, 0);
+        public Vector2 MaxRightPos { get; private set; } = new Vector2(5, 0);
+        public bool IsLeft { get; private set; } = true;
         public GameObject Prefab { get; private set; }
 
         private GameObject[,] enemies;
@@ -46,6 +47,12 @@ namespace ShooterSpace.Module.Enemy
         public void SetPosition(Vector2 pos)
         {
             Position = pos;
+            SetDataAsDirty();
+        }
+
+        public void IsLeftMovement(bool isLeft)
+        {
+            IsLeft = isLeft;
             SetDataAsDirty();
         }
 
