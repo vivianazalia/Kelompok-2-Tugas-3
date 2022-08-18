@@ -15,7 +15,7 @@ namespace ShooterSpace.Module.Enemy
         public Vector2 Offset { get; private set; } = new Vector2(1f, 1f);
         public Vector2 StartPos { get; private set; }
         public Vector2 EndPos { get; private set; }
-        public Vector2 Position { get; private set; } = new Vector3(1.5f, 0.5f);
+        public Vector2 Position { get; private set; } = new Vector3(0, 0);
         public float MoveSpeed { get; private set; } = 2f;
         public Vector2 MaxLeftPos { get; private set; } = new Vector2(-5, 0);
         public Vector2 MaxRightPos { get; private set; } = new Vector2(5, 0);

@@ -5,21 +5,20 @@ using Agate.MVC.Base;
 using Agate.MVC.Core;
 using ShooterSpace.Message;
 
-namespace ShooterSpace.Module.Player
+namespace ShooterSpace.Module.Bullet
 {
-    public class PlayerConnector : BaseConnector
+    public class BulletConnector : BaseConnector
     {
-        private PlayerController player;
+        private BulletController bulletPool;
 
         protected override void Connect()
         {
-            Subscribe<MovePlayerMessage>(player.OnMove);
+            Subscribe<BulletShootMessage>(bulletPool.GetBullet);
         }
 
         protected override void Disconnect()
         {
-            Unsubscribe<MovePlayerMessage>(player.OnMove);
+            Unsubscribe<BulletShootMessage>(bulletPool.GetBullet);
         }
     }
-
 }

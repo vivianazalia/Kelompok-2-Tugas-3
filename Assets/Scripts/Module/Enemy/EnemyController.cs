@@ -64,7 +64,7 @@ namespace ShooterSpace.Module.Enemy
 
         private void OnShoot()
         {
-
+            //publish bullet spawn
         }
 
         private void OnDie()

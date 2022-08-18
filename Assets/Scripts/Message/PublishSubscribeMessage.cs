@@ -4,7 +4,7 @@ using UnityEngine;
 
 using Agate.MVC.Base;
 
-namespace ShooterSpace.Module.PubSubMessage
+namespace ShooterSpace.Message
 {
     public struct PlaySoundMessage
     {
@@ -34,6 +34,16 @@ namespace ShooterSpace.Module.PubSubMessage
     public struct StartGameMessage
     {
 
+    }
+
+    public struct BulletShootMessage
+    {
+        public Vector2 position { get; private set; }
+
+        public BulletShootMessage(Vector2 pos)
+        {
+            position = pos;
+        }
     }
 }
 
