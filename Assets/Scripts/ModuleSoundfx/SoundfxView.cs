@@ -11,19 +11,23 @@ namespace ShooterSpace.Module.Soundfx
         [SerializeField]
         AudioSource soundfxShoot;
         [SerializeField]
-        AudioClip soundfxShootClip;
-        [SerializeField]
         AudioSource soundBGM;
 
-        
+        AudioClip soundfxClip;
+        AudioClip soundBGMClip;
+
         public void PlaySFX()
         {
-            soundfxShoot.PlayOneShot(soundfxShootClip);
+            soundfxClip = Resources.Load<AudioClip>("Sounds/Sfx_Shoot");
+            soundfxShoot.PlayOneShot(soundfxClip);
+            Debug.Log("Play SFX");
         }
         public void PlayBGM()
         {
+            soundBGMClip = Resources.Load<AudioClip>("Sounds/Bgm_Sound");
+            soundBGM.clip = soundBGMClip;
             soundBGM.Play();
+            Debug.Log("Play BGM");
         }
-
     }
 }
