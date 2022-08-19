@@ -17,6 +17,7 @@ namespace ShooterSpace.Home
 
         [SerializeField] public LeaderboardView leaderboardView;
 
+
         public void SetCallbacks(UnityAction onClickPlayButton)
         {
             _playButton.onClick.RemoveAllListeners();
