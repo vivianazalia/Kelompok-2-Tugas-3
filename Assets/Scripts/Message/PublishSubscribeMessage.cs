@@ -22,15 +22,37 @@ namespace ShooterSpace.Module.PubSubMessage
 
     public struct StartGameMessage { }
 
-    public struct BulletShootMessage
+    public struct BulletSpawnMessage
     {
         public Vector2 position { get; private set; }
 
-        public BulletShootMessage(Vector2 pos)
+        public BulletSpawnMessage(Vector2 pos)
         {
             position = pos;
         }
     }
+
+    public struct BulletShootMessage
+    {
+        public float Speed { get; private set; }
+
+        public BulletShootMessage(float speed)
+        {
+            Speed = speed;
+        }
+    }
+
+    public struct EnemySpawnMessage
+    {
+        public Vector2 position { get; private set; }
+
+        public EnemySpawnMessage(Vector2 pos)
+        {
+            position = pos;
+        }
+    }
+
+
     public struct PlaySoundMessage
     {
         public int audioIndex;
@@ -43,5 +65,9 @@ namespace ShooterSpace.Module.PubSubMessage
     public struct InputLeftMessage { }
     public struct InputRightMessage { }
     public struct InputShootMessage { }
+
+    
+
+    
 }
 

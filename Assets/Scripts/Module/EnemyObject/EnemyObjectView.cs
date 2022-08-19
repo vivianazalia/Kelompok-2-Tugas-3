@@ -4,16 +4,20 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using UnityEngine.Events;
+using ShooterSpace.Module.PubSubMessage;
 
 namespace ShooterSpace.Module.EnemyObject
 {
     public class EnemyObjectView : ObjectView<IEnemyObjectModel>
     {
         private UnityAction onEnemyShoot;
+        private UnityAction onEnemyMove;
+        //private UnityAction<EnemySpawnMessage> onEnemySetPos;
 
-        public void SetCallback(UnityAction onShoot)
+        public void SetCallback(UnityAction onShoot, UnityAction onMove)
         {
             onEnemyShoot = onShoot;
+            onEnemyMove = onMove;
         }
 
         protected override void InitRenderModel(IEnemyObjectModel model)
@@ -29,6 +33,7 @@ namespace ShooterSpace.Module.EnemyObject
         private void Update()
         {
             onEnemyShoot?.Invoke();
+            onEnemyMove?.Invoke();
         }
     }
 }

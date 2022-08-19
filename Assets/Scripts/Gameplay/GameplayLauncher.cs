@@ -11,6 +11,7 @@ using ShooterSpace.Module.Bullet;
 using ShooterSpace.Module.InputPlayer;
 using ShooterSpace.Module.Character;
 using ShooterSpace.Module.Soundfx;
+using ShooterSpace.Module.BulletObject;
 
 namespace ShooterSpace.Gameplay
 {
@@ -28,6 +29,7 @@ namespace ShooterSpace.Gameplay
         {
             return new IConnector[]{
                 new EnemyConnector(),
+            
                 new BulletConnector(),
                 new InputConnector()
             };
@@ -39,6 +41,8 @@ namespace ShooterSpace.Gameplay
                 new EnemyController(),
                 new UIController(),
                 new BulletController(),
+                new BulletObjectController(),
+                new EnemyObjectController(),
                 new PlayerController(),
                 new SoundfxController(),
                 new InputController()
@@ -48,7 +52,6 @@ namespace ShooterSpace.Gameplay
         protected override IEnumerator InitSceneObject()
         {
             enemy.SetView(_view.enemyView);
-            bullet.SetView(_view.bulletView);
             _input.SetView(_view.Input);
             _player.SetView(_view.Player);
             yield return null;

@@ -8,13 +8,20 @@ namespace ShooterSpace.Module.BulletObject
 {
     public class BulletObjectModel : BaseModel, IBulletObjectModel
     {
-        public bool IsActive { get; private set; }
-
-        public void SetActive(bool active)
+        public float Speed { get; private set; }
+        public Vector2 Position { get; private set; }
+        public BulletObjectModel()
         {
-            IsActive = active;
-            SetDataAsDirty();
+            Speed = 4f;
         }
+
+        //public bool IsActive { get; private set; }
+        //
+        //public void SetActive(bool active)
+        //{
+        //    IsActive = active;
+        //    SetDataAsDirty();
+        //}
     }
 }
 

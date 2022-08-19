@@ -8,8 +8,20 @@ namespace ShooterSpace.Module.EnemyObject
 {
     public class EnemyObjectModel : BaseModel, IEnemyObjectModel
     {
-        public float DelayShoot { get; private set; } = 3f;
-        public bool IsShoot { get; private set; } = true;
+        public float DelayShoot { get; private set; }
+        public bool IsShoot { get; private set; }
+        public float Speed { get; private set; }
+        public Vector2 MaxLeftPos { get; private set; } = new Vector2(-5, 0);
+        public Vector2 MaxRightPos { get; private set; } = new Vector2(5, 0);
+        public Vector2 Position { get; private set; }
+        public bool IsLeft { get; private set; } = true;
+
+        public EnemyObjectModel()
+        {
+            DelayShoot = 3;
+            IsShoot = true;
+            Speed = 2;
+        }
 
         public void Shoot(bool active)
         {
@@ -26,6 +38,18 @@ namespace ShooterSpace.Module.EnemyObject
         public void DecreaseDelayTime()
         {
             DelayShoot -= Time.deltaTime;
+            SetDataAsDirty();
+        }
+
+        public void SetPosition(Vector2 pos)
+        {
+            Position = pos;
+            SetDataAsDirty();
+        }
+
+        public void IsLeftMovement(bool isLeft)
+        {
+            IsLeft = isLeft;
             SetDataAsDirty();
         }
     }

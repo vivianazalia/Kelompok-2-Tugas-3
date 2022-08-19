@@ -16,8 +16,8 @@ namespace ShooterSpace.Gameplay
     {
         [SerializeField] 
         public EnemyView enemyView;
-        [SerializeField] 
-        public BulletView bulletView;
+        //[SerializeField] 
+        //public BulletView bulletView;
         [SerializeField]
         private InputView _input;
         [SerializeField]
