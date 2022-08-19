@@ -11,13 +11,12 @@ namespace ShooterSpace.Module.EnemyObject
     public class EnemyObjectView : ObjectView<IEnemyObjectModel>
     {
         private UnityAction onEnemyShoot;
-        private UnityAction onEnemyMove;
+        //private UnityAction onEnemyMove;
         //private UnityAction<EnemySpawnMessage> onEnemySetPos;
 
-        public void SetCallback(UnityAction onShoot, UnityAction onMove)
+        public void SetCallback(UnityAction onShoot)
         {
             onEnemyShoot = onShoot;
-            onEnemyMove = onMove;
         }
 
         protected override void InitRenderModel(IEnemyObjectModel model)
@@ -33,7 +32,6 @@ namespace ShooterSpace.Module.EnemyObject
         private void Update()
         {
             onEnemyShoot?.Invoke();
-            onEnemyMove?.Invoke();
         }
     }
 }

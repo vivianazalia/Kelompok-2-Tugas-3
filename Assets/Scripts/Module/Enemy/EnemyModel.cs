@@ -17,8 +17,8 @@ namespace ShooterSpace.Module.Enemy
         public Vector2 EndPos { get; private set; }
         public Vector2 Position { get; private set; } = new Vector3(0, 0);
         public float MoveSpeed { get; private set; } = 2f;
-        public Vector2 MaxLeftPos { get; private set; } = new Vector2(-5, 0);
-        public Vector2 MaxRightPos { get; private set; } = new Vector2(5, 0);
+        public Vector2 MaxLeftPos { get; private set; } = new Vector2(-7, 0);
+        public Vector2 MaxRightPos { get; private set; } = new Vector2(3, 0);
         public bool IsLeft { get; private set; } = true;
         public GameObject Prefab { get; private set; }
 

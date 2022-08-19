@@ -29,7 +29,6 @@ namespace ShooterSpace.Gameplay
         {
             return new IConnector[]{
                 new EnemyConnector(),
-            
                 new BulletConnector(),
                 new InputConnector()
             };

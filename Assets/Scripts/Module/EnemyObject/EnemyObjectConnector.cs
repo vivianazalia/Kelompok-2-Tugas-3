@@ -13,12 +13,10 @@ public class EnemyObjectConnector : BaseConnector
     protected override void Connect()
     {
         Subscribe<BulletShootMessage>(enemy.OnShootMsg);
-        Subscribe<EnemySpawnMessage>(enemy.OnSetPosition);
     }
 
     protected override void Disconnect()
     {
         Unsubscribe<BulletShootMessage>(enemy.OnShootMsg);
-        Unsubscribe<EnemySpawnMessage>(enemy.OnSetPosition);
     }
 }

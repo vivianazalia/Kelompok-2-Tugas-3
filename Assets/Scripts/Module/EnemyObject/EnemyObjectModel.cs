@@ -11,8 +11,6 @@ namespace ShooterSpace.Module.EnemyObject
         public float DelayShoot { get; private set; }
         public bool IsShoot { get; private set; }
         public float Speed { get; private set; }
-        public Vector2 MaxLeftPos { get; private set; } = new Vector2(-5, 0);
-        public Vector2 MaxRightPos { get; private set; } = new Vector2(5, 0);
         public Vector2 Position { get; private set; }
         public bool IsLeft { get; private set; } = true;
 

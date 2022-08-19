@@ -26,7 +26,6 @@ namespace ShooterSpace.Module.Enemy
         public override IEnumerator Initialize()
         {
             yield return base.Initialize();
-            //_model.SetTileSize();
             SpawnEnemy();
         }
 
@@ -40,10 +39,8 @@ namespace ShooterSpace.Module.Enemy
                     enemies.Add(enemy);
                     Vector2 pos = new Vector2((_model.StartPos.x + (_model.TileSize.x + _model.Offset.x) * x), (_model.StartPos.y + (_model.TileSize.y + _model.Offset.y) * y));
                     enemy.transform.position = pos;
-                    Publish<EnemySpawnMessage>(new EnemySpawnMessage(pos));
-                    //GameObject enemy = Object.Instantiate(_model.Prefab,new Vector2((_model.StartPos.x + (_model.TileSize.x + _model.Offset.x) * x), (_model.StartPos.y + (_model.TileSize.y + _model.Offset.y) * y)), _view.transform.rotation);
-                    //enemy.transform.SetParent(_view.transform);
-                    //_model.SetEnemyPosition(x, y, enemy);
+                    GameObject parent = GameObject.Find("EnemyPool");
+                    enemy.transform.SetParent(parent.transform);
                 }
             }
         }

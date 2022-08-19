@@ -31,6 +31,8 @@ namespace ShooterSpace.Module.Bullet
             {
                 bullet = CreateInstanceObject();
                 bullets.Add(bullet);
+                GameObject parent = GameObject.Find("BulletPool");
+                bullet.transform.SetParent(parent.transform);
             }
             bullet.transform.position = msg.position;
         }
