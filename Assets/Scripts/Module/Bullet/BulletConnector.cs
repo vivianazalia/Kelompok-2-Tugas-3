@@ -13,12 +13,12 @@ namespace ShooterSpace.Module.Bullet
 
         protected override void Connect()
         {
-            Subscribe<BulletSpawnMessage>(bulletPool.SpawnBullet);
+            Subscribe<BulletShootMessage>(bulletPool.GetBullet);
         }
 
         protected override void Disconnect()
         {
-            Unsubscribe<BulletSpawnMessage>(bulletPool.SpawnBullet);
+            Unsubscribe<BulletShootMessage>(bulletPool.GetBullet);
         }
     }
 }

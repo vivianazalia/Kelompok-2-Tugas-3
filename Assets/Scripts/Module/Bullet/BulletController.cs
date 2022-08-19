@@ -8,50 +8,36 @@ using ShooterSpace.Message;
 
 namespace ShooterSpace.Module.Bullet
 {
-    public class BulletController : BaseController<BulletController>
+    public class BulletController : ObjectController<BulletController, BulletModel, IBulletModel, BulletView>
     {
-        public List<GameObject> bullets = new List<GameObject>();
-
-        public GameObject CreateInstanceObject()
-        {
-            BulletObjectModel bulletModel = new BulletObjectModel();
-            GameObject prefab = Resources.Load<GameObject>("Prefabs/Bullet");
-            GameObject bulletObj = Object.Instantiate(prefab);
-            BulletObjectView bulletView = bulletObj.GetComponent<BulletObjectView>();
-            BulletObjectController bulletController = new BulletObjectController();
-            InjectDependencies(bulletController);
-            bulletController.Init(bulletModel, bulletView);
-            return bulletObj;
-        }
-
-        public void SpawnBullet(BulletSpawnMessage msg)
-        {
-            GameObject bullet = GetBullet();
-            if(bullet == null)
-            {
-                bullet = CreateInstanceObject();
-                bullets.Add(bullet);
-            }
-            bullet.transform.position = msg.position;
-        }
-
-        public GameObject GetBullet()
-        {
-            foreach (var b in bullets)
-            {
-                if (!b.activeInHierarchy)
-                {
-                    b.SetActive(true);
-                    return b;
-                }
-            }
-
-            return null;
-        }
-
         public override IEnumerator Initialize()
         {
             yield return base.Initialize();
+            _model.SetPrefab();
+        }
+
+        public void OnMove()
+        {
+            //bullet spawn dan nembak ke atas
+            _view.transform.position += (Vector3.up * _model.Speed * Time.deltaTime);
+        }
+
+        public void GetBullet(BulletShootMessage msg)
+        {
+            GameObject bullet = _model.GetBullet();
+            if(bullet == null)
+            {
+                bullet = Object.Instantiate(_model.Prefab, _view.transform.position, Quaternion.identity);
+                _model.AddBulletToPool(bullet);
+            }
+
+            bullet.transform.position = msg.position;
+        }
+
+        public override void SetView(BulletView view)
+        {
+            base.SetView(view);
+            _view.SetCallback(OnMove);
         }
     }
 }

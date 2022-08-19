@@ -8,14 +8,8 @@ namespace ShooterSpace.Module.EnemyObject
 {
     public class EnemyObjectModel : BaseModel, IEnemyObjectModel
     {
-        public float DelayShoot { get; private set; }
-        public bool IsShoot { get; private set; }
-
-        public EnemyObjectModel()
-        {
-            DelayShoot = 3;
-            IsShoot = true;
-        }
+        public float DelayShoot { get; private set; } = 3f;
+        public bool IsShoot { get; private set; } = true;
 
         public void Shoot(bool active)
         {

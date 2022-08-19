@@ -10,7 +10,7 @@ namespace ShooterSpace.Module.Enemy
     {
         public int Life { get; private set; }
         public bool IsPlaying { get; private set; } = true;
-        public Vector2 BoardSize { get; private set; } = new Vector2(6, 3);
+        public Vector2 BoardSize { get; private set; } = new Vector2(5, 4);
         public Vector2 TileSize { get; private set; }
         public Vector2 Offset { get; private set; } = new Vector2(1f, 1f);
         public Vector2 StartPos { get; private set; }

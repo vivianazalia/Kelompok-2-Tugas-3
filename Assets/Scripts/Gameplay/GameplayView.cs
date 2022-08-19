@@ -12,6 +12,7 @@ namespace ShooterSpace.Gameplay
     public class GameplayView : BaseSceneView
     {
         [SerializeField] public EnemyView enemyView;
+        [SerializeField] public BulletView bulletView;
     }
 
 }
