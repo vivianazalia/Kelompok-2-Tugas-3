@@ -4,27 +4,44 @@ using UnityEngine;
 using Agate.MVC.Base;
 using Agate.MVC.Core;
 using ShooterSpace.Message;
+using ShooterSpace.Module.EnemyObject;
 
 namespace ShooterSpace.Module.Enemy
 {
     public class EnemyController : ObjectController<EnemyController, EnemyModel, IEnemyModel, EnemyView>
-    { 
+    {
+        private List<GameObject> enemies = new List<GameObject>();
+
+        public GameObject CreateInstanceObject()
+        {
+            EnemyObjectModel enemyModel = new EnemyObjectModel();
+            GameObject prefab = Resources.Load<GameObject>("Prefabs/Enemy");
+            GameObject enemyObj = Object.Instantiate(prefab);
+            EnemyObjectView enemyView = enemyObj.GetComponent<EnemyObjectView>();
+            EnemyObjectController enemyController = new EnemyObjectController();
+            InjectDependencies(enemyController);
+            enemyController.Init(enemyModel, enemyView);
+            return enemyObj;
+        }
         public override IEnumerator Initialize()
         {
             yield return base.Initialize();
-            _model.SetTileSize();
+            //_model.SetTileSize();
+            SpawnEnemy();
         }
 
         private void SpawnEnemy()
-        {
+        { 
             for (int x = 0; x < _model.BoardSize.x; x++)
             {
                 for (int y = 0; y < _model.BoardSize.y; y++)
                 {
-                    GameObject enemy = Object.Instantiate(_model.Prefab,
-                                        new Vector2((_model.StartPos.x + (_model.TileSize.x + _model.Offset.x) * x), (_model.StartPos.y + (_model.TileSize.y + _model.Offset.y) * y)),
-                                        _view.transform.rotation);
-                    enemy.transform.SetParent(_view.transform);
+                    GameObject enemy = CreateInstanceObject();
+                    enemies.Add(enemy);
+                    Vector2 pos = new Vector2((_model.StartPos.x + (_model.TileSize.x + _model.Offset.x) * x), (_model.StartPos.y + (_model.TileSize.y + _model.Offset.y) * y));
+                    enemy.transform.position = pos;
+                    //GameObject enemy = Object.Instantiate(_model.Prefab,new Vector2((_model.StartPos.x + (_model.TileSize.x + _model.Offset.x) * x), (_model.StartPos.y + (_model.TileSize.y + _model.Offset.y) * y)), _view.transform.rotation);
+                    //enemy.transform.SetParent(_view.transform);
                     //_model.SetEnemyPosition(x, y, enemy);
                 }
             }
@@ -62,25 +79,9 @@ namespace ShooterSpace.Module.Enemy
             }
         }
 
-        private void OnShoot()
-        {
-            //publish bullet spawn
-        }
-
-        private void OnDie()
-        {
-
-        }
-
-        private void OnDecreaseLife()
-        {
-            _model.DecreaseLife();
-        }
-
         public override void SetView(EnemyView view)
         {
             base.SetView(view);
-            SpawnEnemy();
             _view.SetCallback(OnMove);
         }
     }

@@ -36,13 +36,23 @@ namespace ShooterSpace.Message
 
     }
 
-    public struct BulletShootMessage
+    public struct BulletSpawnMessage
     {
         public Vector2 position { get; private set; }
 
-        public BulletShootMessage(Vector2 pos)
+        public BulletSpawnMessage(Vector2 pos)
         {
             position = pos;
+        }
+    }
+
+    public struct BulletShootMessage
+    {
+        public float Speed { get; private set; }
+
+        public BulletShootMessage(float speed)
+        {
+            Speed = speed;
         }
     }
 }

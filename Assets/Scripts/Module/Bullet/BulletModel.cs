@@ -19,17 +19,6 @@ namespace ShooterSpace.Module.Bullet
         public void SetPrefab()
         {
             Prefab = Resources.Load<GameObject>("Prefabs/Bullet");
-            SetDataAsDirty();
-        }
-
-        public bool IsEmpty()
-        {
-            if (BulletList.Count == 0 || GetBullet() == null)
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public GameObject GetBullet()
@@ -44,11 +33,6 @@ namespace ShooterSpace.Module.Bullet
             }
 
             return null;
-        }
-
-        public void AddBulletToPool(GameObject obj)
-        {
-            BulletList.Add(obj);
         }
     }
 
