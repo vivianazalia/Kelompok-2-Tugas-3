@@ -1,32 +1,26 @@
 [Module Character]
-
-*BaseObject ->speed,move(), shoot()
-**Character
-**Enemy
-
-*Shield
-
-IDameable
-
-- Void TakeDamage ( )
-- Void OnDestruct ( )
-
-[Player Status]
-- Void ReduceLife ()
-- Void AddScore ()
+- Player - Rolando
+- Input Player - Rolando
+- EnemyPool - Vivian
+- Enemy Object - Vivian
+- Bullet Enemy Pool - Vivian
+- Bullet Enemy Object - Vivian
 
 
-[PowerUp]
-- PowerUp
 
-[Module Leaderboard]
+[Module Leaderboard] - Rolando
 - Save(nama, score)
 - Load
 - DataView
 
-[Sound]
+[Sound] - Rolando
 void PlayBGM()
 void Sfx()
+
+[Power UP]
+
+[Bullet Player]
+
 
 
 
