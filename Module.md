@@ -18,6 +18,7 @@ void PlayBGM()
 void Sfx()
 
 // yang belum sempat dikerjakan
+
 [Power UP]
 
 [Bullet Player]
